@@ -9,6 +9,18 @@
     <title>Note Taker</title>
     <meta name="description" content="A note taking application" />
     <meta name="author" content="Flo Orford" />
+
+    <link href="index.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link href="icon.png" rel="icon" />
   </head>
 
   <body>
@@ -19,22 +31,26 @@
       <p>Use the form below to create, amend and delete notes</p>
       <p>Notes will be saved on page refresh</p>
 
-      <section>
-        <label for="noteColour"
-          >Colour Picker:
-          <input type="color" id="noteColour" name="head" value="#e66465"
-        /></label>
-      </section>
-      <section id="notes">
-        <ul id="list"></ul>
-      </section>
-      <form>
-        <label for="noteInput"
-          >Add a note:
-          <input type="text" name="note" id="noteInput" />
-        </label>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div id="notes" class="card-content white-text">
+              <ul id="list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <button id="addBtn" type="button">Add</button>
+      <form>
+        <label for="noteInput">Add a note:</label>
+        <input type="text" name="note" id="noteInput" />
+
+        <button id="addBtn" class="waves-effect waves-light pink" type="button">
+          Add
+        </button>
+
+        <label for="noteColour">Colour picker:</label>
+        <input type="color" id="noteColour" name="head" value="#e66465" />
       </form>
     </main>
     <script src="index.js"></script>

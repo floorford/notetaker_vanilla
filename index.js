@@ -15,9 +15,9 @@ function setupNotes() {
   const storedList = JSON.parse(sessionStorage.getItem("list"));
 
   if (storedList && storedList.length) {
-    storedList.forEach((element) => {
+    storedList.forEach((element, index) => {
       if (element.length) {
-        addNote(element);
+        addNote(element, index);
       }
     });
   }
@@ -32,7 +32,7 @@ function setupNotes() {
   }
 }
 
-function addNote(noteContent) {
+function addNote(noteContent, index) {
   const helperText = document.getElementById("helper");
   if (helperText) {
     helperText.remove();
@@ -44,7 +44,7 @@ function addNote(noteContent) {
   }
 
   const date = new Date();
-  const noteId = `${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}`;
+  const noteId = `${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}${index}`;
 
   const newNote = document.createElement("li");
 
@@ -54,14 +54,14 @@ function addNote(noteContent) {
 
   let editBtn = document.createElement("a");
   editBtn.href = "#";
-  editBtn.className = "edit";
-  editBtn.innerHTML = "edit";
+  editBtn.className = "waves-effect waves-light light-blue lighten-2";
+  editBtn.innerHTML = "Edit";
   editBtn.addEventListener("click", editNote, false);
 
   let deleteBtn = document.createElement("a");
   deleteBtn.href = "#";
-  deleteBtn.className = "delete";
-  deleteBtn.innerHTML = "delete";
+  deleteBtn.className = "waves-effect waves-light red darken-3";
+  deleteBtn.innerHTML = "Delete";
   deleteBtn.addEventListener("click", deleteNote, false);
 
   newNote.appendChild(span);
@@ -74,7 +74,7 @@ function addNote(noteContent) {
 }
 
 function createHeading() {
-  heading = document.createElement("h3");
+  heading = document.createElement("h4");
   heading.innerHTML = "My Notes";
   heading.setAttribute("id", "heading");
 
@@ -93,19 +93,19 @@ function createHelperText() {
 let noteId = "";
 
 addButton.onclick = function () {
-  let buttonName = this.innerHTML;
+  let buttonName = this.innerText;
   if (buttonName == "Add") {
     if (!noteInput.value || noteInput.value === "" || noteInput.value === " ") {
       return false;
     }
     addNote(noteInput.value);
   }
+
   if (buttonName == "Edit") {
-    this.innerHTML = "Add";
+    this.innerText = "Add";
     if (!noteInput.value || noteInput.value === "" || noteInput.value === " ") {
       return false;
     }
-    console.log(noteId);
     document.getElementById(noteId).innerHTML = noteInput.value;
 
     noteInput.value = "";
@@ -117,7 +117,6 @@ function editNote() {
   const currentNote = this.parentNode;
   const item = currentNote.getElementsByTagName("*");
   noteInput.value = item[0].innerHTML;
-  console.log(item[0]);
   noteId = item[0].id;
 }
 
@@ -135,9 +134,8 @@ const colorPicker = document.getElementById("noteColour");
 colorPicker.addEventListener("change", changeColour, false);
 
 function changeColour(event) {
-  document.querySelectorAll("li").forEach(function (li) {
-    li.style.border = `1px solid ${event.target.value}`;
-  });
+  const card = document.getElementById("notes");
+  card.style.backgroundColor = event.target.value;
 }
 
 // Before refreshing the page, save the form data to sessionStorage
