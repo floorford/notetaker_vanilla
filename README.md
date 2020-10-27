@@ -2,6 +2,6 @@
 
 Very plain and basic note taker using regular JavaScript, CSS and HTML5.
 
-Was a mini project I saw on a coding website and thought it would be fun to try for some regular old JS practice and using session storage too.
+Was a mini project as part of a job application, great practice for vanilla JS and session storage practice.
 
-Needs some styling and tweaking still!
+Needs some serious styling and tweaking still!
