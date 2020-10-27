@@ -1,0 +1,42 @@
+<!-- Enter your HTML code here -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Note Taker</title>
+    <meta name="description" content="A note taking application" />
+    <meta name="author" content="Flo Orford" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Note Taker</h1>
+    </header>
+    <main>
+      <p>Use the form below to create, amend and delete notes</p>
+      <p>Notes will be saved on page refresh</p>
+
+      <section>
+        <label for="noteColour"
+          >Colour Picker:
+          <input type="color" id="noteColour" name="head" value="#e66465"
+        /></label>
+      </section>
+      <section id="notes">
+        <ul id="list"></ul>
+      </section>
+      <form>
+        <label for="noteInput"
+          >Add a note:
+          <input type="text" name="note" id="noteInput" />
+        </label>
+
+        <button id="addBtn" type="button">Add</button>
+      </form>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
